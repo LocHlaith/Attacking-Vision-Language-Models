@@ -1,0 +1,5 @@
+﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
+1.png,text_reverse_greedy,manual,817,sports car,511,convertible,13.887371063232422,0.9912252426147461,0.1,38.94902801513672,,1977,True,6.245241099997656,1977,True,accepted after 50 deletion checks
+2.png,text_reverse_greedy,manual,896,washbasin,578,gown,10.472273826599121,7.527097225189209,0.1,55.42314910888672,,1976,True,4.99988509999821,1976,True,accepted after 50 deletion checks
+3.png,text_reverse_greedy,manual,906,Windsor tie,457,bow tie,11.309459686279297,4.283458232879639,0.1,33.861541748046875,,1975,True,2.01683399999456,1975,True,accepted after 50 deletion checks
+4.png,text_reverse_greedy,manual,985,daisy,868,tray,13.697983741760254,1.9296035766601562,0.1,48.82506561279297,,1975,True,5.807089299996733,1975,True,accepted after 50 deletion checks

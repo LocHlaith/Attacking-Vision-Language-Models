@@ -1,0 +1,5 @@
+﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
+1.png,dual_loss,manual,817,sports car,511,convertible,17.47317886352539,7.625918865203857,5.0,0.6092231869697571,,,True,1.017080999998143,30,True,feasible satisfactory solution retained
+2.png,dual_loss,manual,283,Persian cat,700,paper towel,34.832618713378906,34.45267868041992,5.0,2.151190996170044,,,True,0.9924336999974912,30,True,feasible satisfactory solution retained
+3.png,dual_loss,manual,906,Windsor tie,652,military uniform,29.036468505859375,33.49999237060547,5.0,1.9974522590637207,,,True,0.9657140000053914,30,True,feasible satisfactory solution retained
+4.png,dual_loss,manual,985,daisy,591,handkerchief,26.521467208862305,18.84962272644043,5.0,0.9042032957077026,,,True,0.9850010000081966,30,True,feasible satisfactory solution retained

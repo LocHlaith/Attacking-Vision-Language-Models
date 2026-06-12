@@ -1,0 +1,20 @@
+[project]
+name = "avlm-or"
+version = "0.1.0"
+description = "Operations-research implementations for attacking MobileNetV2"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.0",
+    "pillow>=10.0",
+    "scipy>=1.12",
+    "torch>=2.2",
+    "torchvision>=0.17",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+

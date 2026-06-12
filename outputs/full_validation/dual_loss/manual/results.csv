@@ -1,0 +1,5 @@
+﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
+1.png,dual_loss,manual,817,sports car,511,convertible,17.4688720703125,7.992372989654541,5.0,0.6226962208747864,,,True,0.8042481999873416,30,True,feasible satisfactory solution retained
+2.png,dual_loss,manual,896,washbasin,797,sleeping bag,22.525707244873047,21.8176212310791,5.0,1.5659488439559937,,,True,0.8359903999953531,30,True,feasible satisfactory solution retained
+3.png,dual_loss,manual,906,Windsor tie,652,military uniform,30.169212341308594,35.579795837402344,5.0,1.2811479568481445,,,True,0.8192543999903137,30,True,feasible satisfactory solution retained
+4.png,dual_loss,manual,985,daisy,591,handkerchief,26.671051025390625,18.714792251586914,5.0,0.9041644334793091,,,True,0.8132838000019547,30,True,feasible satisfactory solution retained

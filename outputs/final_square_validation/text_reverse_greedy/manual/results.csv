@@ -1,0 +1,5 @@
+﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
+1.png,text_reverse_greedy,manual,817,sports car,511,convertible,14.797595977783203,0.1450052261352539,0.1,6.266073226928711,,37,True,11.638196400002926,37,True,10_top_+90deg; accepted after 144 deletion checks
+2.png,text_reverse_greedy,manual,283,Persian cat,332,Angora,9.649369239807129,0.11153411865234375,0.1,10.775693893432617,,57,True,28.4648096000019,57,True,12_top_+30deg; accepted after 180 deletion checks
+3.png,text_reverse_greedy,manual,906,Windsor tie,683,oboe,9.8046293258667,0.11529541015625,0.1,9.911470413208008,,145,True,44.87063940000371,145,True,18_center_-45deg; accepted after 487 deletion checks
+4.png,text_reverse_greedy,manual,985,daisy,591,handkerchief,13.541707992553711,0.18954849243164062,0.1,7.476944446563721,,34,True,8.189744599992991,34,True,10_top_+45deg; accepted after 141 deletion checks

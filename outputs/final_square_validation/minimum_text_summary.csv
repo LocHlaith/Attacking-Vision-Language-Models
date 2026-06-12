@@ -1,0 +1,5 @@
+﻿"image","original_class_name","algorithm","backend","decision_class_name","decision_function","decision_threshold","perturbation_area","successful","template"
+"1.png","sports car","text_reverse_greedy","manual","convertible","0.1450052261352539","0.1","37","True","10_top_+90deg; accepted after 144 deletion checks"
+"2.png","Persian cat","text_linearized_milp","manual","Angora","0.15318679809570312","0.1","56","True","12_top_+45deg; accepted after 88 deletion checks"
+"3.png","Windsor tie","text_reverse_greedy","manual","oboe","0.11529541015625","0.1","145","True","18_center_-45deg; accepted after 487 deletion checks"
+"4.png","daisy","text_linearized_milp","manual","handkerchief","0.18954849243164062","0.1","34","True","10_top_+45deg; accepted after 85 deletion checks"

@@ -1,0 +1,5 @@
+﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
+1.png,original,none,817,sports car,817,sports car,14.516892433166504,0.8021634817123413,,0.0,,,False,0.0,0,True,original image
+2.png,original,none,283,Persian cat,896,washbasin,9.745102882385254,3.285454273223877,,0.0,,,False,0.0,0,True,original image
+3.png,original,none,906,Windsor tie,906,Windsor tie,12.536430358886719,0.23010607063770294,,0.0,,,False,0.0,0,True,original image
+4.png,original,none,985,daisy,985,daisy,13.113282203674316,0.8445044159889221,,0.0,,,False,0.0,0,True,original image

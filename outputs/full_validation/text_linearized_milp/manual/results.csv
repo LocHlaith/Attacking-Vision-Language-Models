@@ -1,0 +1,5 @@
+﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
+1.png,text_linearized_milp,manual,817,sports car,511,convertible,14.031105995178223,0.45014190673828125,0.1,28.421062469482422,,1013,True,79.76914750000287,1013,True,accepted after 10 deletion checks
+2.png,text_linearized_milp,manual,896,washbasin,794,shower curtain,10.687409400939941,0.6910686492919922,0.1,35.696937561035156,,1013,True,122.43608949999907,1013,True,accepted after 10 deletion checks
+3.png,text_linearized_milp,manual,906,Windsor tie,457,bow tie,11.394142150878906,2.7433338165283203,0.1,25.025768280029297,,1013,True,73.45718270000361,1013,True,accepted after 10 deletion checks
+4.png,text_linearized_milp,manual,985,daisy,591,handkerchief,13.057907104492188,0.7365684509277344,0.1,35.10881805419922,,1013,True,128.37799380000797,1013,True,accepted after 10 deletion checks

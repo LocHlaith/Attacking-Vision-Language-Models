@@ -1,0 +1,5 @@
+﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
+1.png,projected_gradient,manual,817,sports car,511,convertible,18.723207473754883,13.517828941345215,,1.2280726432800293,4.0,,True,0.22887249999621417,5,False,maximum iterations reached
+2.png,projected_gradient,manual,283,Persian cat,700,paper towel,37.73930740356445,38.95207214355469,,3.5735714435577393,4.0,,True,0.22541329999512527,5,False,maximum iterations reached
+3.png,projected_gradient,manual,906,Windsor tie,652,military uniform,34.731895446777344,44.056819915771484,,3.8611960411071777,4.0,,True,0.229742300012731,5,False,maximum iterations reached
+4.png,projected_gradient,manual,985,daisy,591,handkerchief,33.980892181396484,29.33296775817871,,1.8532077074050903,4.0,,True,0.23355530000117142,5,False,maximum iterations reached

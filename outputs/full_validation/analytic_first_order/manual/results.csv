@@ -1,0 +1,5 @@
+﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
+1.png,analytic_first_order,manual,817,sports car,511,convertible,13.889453887939453,7.428667068481445,,3.824326753616333,4.0,,True,0.12780420000490267,1,True,first-order Lagrange satisfactory solution
+2.png,analytic_first_order,manual,896,washbasin,700,paper towel,11.788749694824219,9.232748031616211,,4.0,4.0,,True,0.030276299992692657,1,True,first-order Lagrange satisfactory solution
+3.png,analytic_first_order,manual,906,Windsor tie,982,groom,8.518052101135254,7.958491325378418,,3.9994373321533203,4.0,,True,0.04456770000979304,1,True,first-order Lagrange satisfactory solution
+4.png,analytic_first_order,manual,985,daisy,591,handkerchief,19.235177993774414,12.573210716247559,,4.0,4.0,,True,0.029183599996031262,1,True,first-order Lagrange satisfactory solution

@@ -1,0 +1,5 @@
+﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
+1.png,projected_gradient,manual,817,sports car,511,convertible,16.03333854675293,8.318473815917969,,0.9045975804328918,4.0,,True,0.14837859999533975,2,False,maximum iterations reached
+2.png,projected_gradient,manual,896,washbasin,797,sleeping bag,13.150967597961426,15.15402603149414,,2.0053396224975586,4.0,,True,0.06680049999704352,2,False,maximum iterations reached
+3.png,projected_gradient,manual,906,Windsor tie,652,military uniform,11.400392532348633,14.761977195739746,,1.2918219566345215,4.0,,True,0.1067410999967251,2,False,maximum iterations reached
+4.png,projected_gradient,manual,985,daisy,591,handkerchief,26.27326774597168,19.781673431396484,,1.5158324241638184,4.0,,True,0.07690020000154618,2,False,maximum iterations reached

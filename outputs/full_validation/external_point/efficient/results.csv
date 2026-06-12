@@ -1,0 +1,5 @@
+﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
+1.png,external_point,efficient,817,sports car,511,convertible,13.604750633239746,7.2609543800354,5.0,7.036591529846191,,,True,0.5435167000105139,5,True,constraint violation tolerance satisfied
+2.png,external_point,efficient,896,washbasin,700,paper towel,11.82093620300293,9.284415245056152,5.0,4.591433525085449,,,True,0.7337236000021221,5,True,constraint violation tolerance satisfied
+3.png,external_point,efficient,906,Windsor tie,982,groom,7.974496841430664,7.2215070724487305,5.0,6.0362443923950195,,,True,0.5364106000051834,5,True,constraint violation tolerance satisfied
+4.png,external_point,efficient,985,daisy,591,handkerchief,17.68046760559082,10.546225547790527,5.0,6.729015350341797,,,True,0.5340972000121837,5,True,constraint violation tolerance satisfied

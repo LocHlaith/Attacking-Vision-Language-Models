@@ -1,0 +1,5 @@
+﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
+1.png,second_order_kkt,manual,817,sports car,511,convertible,14.948686599731445,7.263727188110352,,3.8281311988830566,4.0,,True,61.772500199993374,12,True,second-order KKT approximation completed
+2.png,second_order_kkt,manual,896,washbasin,700,paper towel,11.71407699584961,9.307419776916504,,4.0,4.0,,True,85.86084039999696,12,True,second-order KKT approximation completed
+3.png,second_order_kkt,manual,906,Windsor tie,982,groom,7.899947643280029,8.093262672424316,,3.999418258666992,4.0,,True,68.50695009999617,12,True,second-order KKT approximation completed
+4.png,second_order_kkt,manual,985,daisy,591,handkerchief,19.988916397094727,13.027463912963867,,3.9400174617767334,4.0,,True,92.50589110000874,12,True,second-order KKT approximation completed
