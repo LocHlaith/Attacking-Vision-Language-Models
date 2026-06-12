@@ -1,5 +1,5 @@
 ﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
-1.png,weighted_conjugate_fr,efficient,817,sports car,581,grille,22.447612762451172,28.50229835510254,,11.628823280334473,,,True,0.6689753000100609,5,False,maximum iterations reached
-2.png,weighted_conjugate_fr,efficient,283,Persian cat,700,paper towel,47.04243850708008,51.972835540771484,,16.498117446899414,,,True,0.6953674999967916,5,False,maximum iterations reached
-3.png,weighted_conjugate_fr,efficient,906,Windsor tie,341,hog,14.641077041625977,27.666078567504883,,11.152070045471191,,,True,0.758469000007608,5,False,maximum iterations reached
-4.png,weighted_conjugate_fr,efficient,985,daisy,591,handkerchief,40.40399932861328,41.12736892700195,,12.66550064086914,,,True,0.6992944000085117,5,False,maximum iterations reached
+1.png,weighted_conjugate_fr,efficient,817,sports car,717,pickup,36.03089904785156,59.42737579345703,,6.17180871963501,,,True,0.5069119999971008,24,True,library quasi-Newton backend completed
+2.png,weighted_conjugate_fr,efficient,283,Persian cat,700,paper towel,83.73358917236328,92.93304443359375,,4.464104175567627,,,True,0.46121140000468586,23,True,library quasi-Newton backend completed
+3.png,weighted_conjugate_fr,efficient,906,Windsor tie,341,hog,71.41645812988281,104.68578338623047,,5.544147491455078,,,True,0.5100151000078768,25,True,library quasi-Newton backend completed
+4.png,weighted_conjugate_fr,efficient,985,daisy,591,handkerchief,61.806861877441406,72.56087493896484,,7.191074371337891,,,True,0.49830750000546686,24,True,library quasi-Newton backend completed

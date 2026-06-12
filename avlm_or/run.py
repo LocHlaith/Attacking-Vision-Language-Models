@@ -47,12 +47,6 @@ def main() -> None:
             arguments.output_root,
             arguments.device,
             arguments.reference_labels,
-            arguments.text_font_sizes
-            if arguments.text_font_sizes is not None
-            else DEFAULT_FONT_SIZES,
-            arguments.text_angles
-            if arguments.text_angles is not None
-            else DEFAULT_ANGLES,
         )
         return
     if arguments.command == "text":
@@ -68,6 +62,12 @@ def main() -> None:
             arguments.output_root,
             arguments.device,
             arguments.reference_labels,
+            arguments.text_font_sizes
+            if arguments.text_font_sizes is not None
+            else DEFAULT_FONT_SIZES,
+            arguments.text_angles
+            if arguments.text_angles is not None
+            else DEFAULT_ANGLES,
         )
         return
     settings = SolverSettings(

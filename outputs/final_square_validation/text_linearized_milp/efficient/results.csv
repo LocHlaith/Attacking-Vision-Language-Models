@@ -1,5 +1,5 @@
 ﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
-1.png,text_linearized_milp,efficient,817,sports car,511,convertible,14.843562126159668,0.10453033447265625,0.1,6.459939479827881,,40,True,7.952132399994298,40,True,10_top_+90deg; accepted after 99 deletion checks
-2.png,text_linearized_milp,efficient,283,Persian cat,332,Angora,9.816582679748535,0.15318679809570312,0.1,10.571662902832031,,56,True,28.620208599997568,56,True,12_top_+45deg; accepted after 88 deletion checks
-3.png,text_linearized_milp,efficient,906,Windsor tie,683,oboe,9.620116233825684,1.162184715270996,0.1,14.466931343078613,,323,True,31.788082199986093,323,True,28_center_-60deg; accepted after 1200 deletion checks
-4.png,text_linearized_milp,efficient,985,daisy,591,handkerchief,13.541707992553711,0.18954849243164062,0.1,7.476944446563721,,34,True,5.58147089999693,34,True,10_top_+45deg; accepted after 85 deletion checks
+1.png,text_linearized_milp,efficient,817,sports car,511,convertible,14.405082702636719,0.10226154327392578,0.1,6.712076187133789,,56,True,5.653840900005889,56,True,12_top_-45deg; accepted after 126 deletion checks
+2.png,text_linearized_milp,efficient,283,Persian cat,332,Angora,9.821553230285645,0.11434078216552734,0.1,11.898662567138672,,71,True,17.448670400000992,71,True,14_top_-45deg; accepted after 51 deletion checks
+3.png,text_linearized_milp,efficient,906,Windsor tie,683,oboe,10.088719367980957,0.22802734375,0.1,14.623185157775879,,325,True,30.528273799995077,325,True,28_center_-30deg; accepted after 317 deletion checks
+4.png,text_linearized_milp,efficient,985,daisy,591,handkerchief,13.530771255493164,0.11327075958251953,0.1,7.49287223815918,,34,True,4.701644100001431,34,True,10_top_+45deg; accepted after 25 deletion checks

@@ -1,5 +1,5 @@
 ﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
-1.png,second_order_kkt,efficient,817,sports car,511,convertible,14.989240646362305,7.28378438949585,,3.816096305847168,4.0,,True,48.97520369999984,12,True,second-order KKT approximation completed
-2.png,second_order_kkt,efficient,283,Persian cat,700,paper towel,10.87296199798584,4.684383392333984,,3.945805549621582,4.0,,True,66.4849022999988,12,True,second-order KKT approximation completed
-3.png,second_order_kkt,efficient,906,Windsor tie,982,groom,7.947751522064209,8.106826782226562,,3.931255578994751,4.0,,True,59.370128299997305,12,True,second-order KKT approximation completed
-4.png,second_order_kkt,efficient,985,daisy,591,handkerchief,19.89228057861328,13.001679420471191,,4.0,4.0,,True,48.92832799999451,12,True,second-order KKT approximation completed
+1.png,second_order_kkt,efficient,817,sports car,511,convertible,14.989240646362305,7.28378438949585,,3.816096305847168,4.0,,True,48.781920399997034,12,True,second-order KKT approximation completed
+2.png,second_order_kkt,efficient,283,Persian cat,700,paper towel,10.87296199798584,4.684383392333984,,3.945805549621582,4.0,,True,66.69841889999225,12,True,second-order KKT approximation completed
+3.png,second_order_kkt,efficient,906,Windsor tie,982,groom,7.947751522064209,8.106826782226562,,3.931255578994751,4.0,,True,57.942702300002566,12,True,second-order KKT approximation completed
+4.png,second_order_kkt,efficient,985,daisy,591,handkerchief,19.89228057861328,13.001679420471191,,4.0,4.0,,True,50.26601700000174,12,True,second-order KKT approximation completed

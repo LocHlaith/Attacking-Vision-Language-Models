@@ -1,5 +1,5 @@
 ﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
-1.png,toilet_tissue,efficient,817,sports car,999,toilet tissue,9.36259937286377,3.8849401473999023,0.1,1.460033893585205,,,True,3.0452150000055553,30,True,feasible satisfactory solution retained
-2.png,toilet_tissue,efficient,283,Persian cat,999,toilet tissue,15.095321655273438,5.141063690185547,0.1,0.5970240831375122,,,True,3.2335049000103027,30,True,feasible satisfactory solution retained
-3.png,toilet_tissue,efficient,906,Windsor tie,999,toilet tissue,11.222293853759766,3.4324021339416504,0.1,0.9810317754745483,,,True,3.1062374000030104,30,True,feasible satisfactory solution retained
-4.png,toilet_tissue,efficient,985,daisy,999,toilet tissue,9.260994911193848,0.10793018341064453,0.1,1.6577059030532837,,,True,3.16110949999711,30,True,feasible satisfactory solution retained
+1.png,toilet_tissue,efficient,817,sports car,999,toilet tissue,9.929466247558594,5.142040729522705,0.1,1.5499944686889648,,,True,2.1405146999895805,0,True,feasible satisfactory solution retained
+2.png,toilet_tissue,efficient,283,Persian cat,999,toilet tissue,19.760053634643555,10.372671127319336,0.1,1.1326625347137451,,,True,2.1797695999994176,0,True,feasible satisfactory solution retained
+3.png,toilet_tissue,efficient,906,Windsor tie,999,toilet tissue,25.60843849182129,14.193338394165039,0.1,1.4663488864898682,,,True,2.1244487000076333,0,True,feasible satisfactory solution retained
+4.png,toilet_tissue,efficient,985,daisy,999,toilet tissue,7.509649276733398,0.9720044136047363,0.1,1.4800715446472168,,,True,2.0665325000009034,0,True,feasible satisfactory solution retained

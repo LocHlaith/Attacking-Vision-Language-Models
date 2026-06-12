@@ -9,12 +9,12 @@ from ..types import SolverResult, SolverSettings
 Objective = Callable[[torch.Tensor], torch.Tensor]
 
 
-def compiled_steepest_descent(
+def optimizer_steepest_descent(
     objective: Objective,
     initial_point: torch.Tensor,
     settings: SolverSettings | None = None,
 ) -> SolverResult:
-    """Efficient experimental backend using PyTorch's compiled tensor updates."""
+    """Efficient backend using PyTorch's optimized tensor updates."""
     settings = settings or SolverSettings()
     point = initial_point.detach().clone().requires_grad_(True)
     optimizer = torch.optim.SGD([point], lr=settings.initial_step)
@@ -46,7 +46,7 @@ def library_quasi_newton(
     initial_point: torch.Tensor,
     settings: SolverSettings | None = None,
 ) -> SolverResult:
-    """Fast non-submission backend; the mathematical objective is unchanged."""
+    """Efficient quasi-Newton backend; the mathematical objective is unchanged."""
     settings = settings or SolverSettings()
     point = initial_point.detach().clone().requires_grad_(True)
     optimizer = torch.optim.LBFGS(

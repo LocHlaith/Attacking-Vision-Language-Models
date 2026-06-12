@@ -334,6 +334,11 @@ def efficient_linearized_milp(
     selected = result.x[:number_binary] >= 0.5
     for vertex, chosen in zip(vertices, selected):
         mask[vertex] = bool(chosen)
+    selected_gain = float(gain[mask].sum())
+    if selected_gain + 1e-8 < right_hand_side:
+        return None
+    if not _stroke_constraints_hold(template, mask, retention, use_network_flow=True):
+        return None
     return mask
 
 
@@ -356,14 +361,15 @@ def linearized_then_prune(
             + float(gain[mask].sum())
         )
         if backend == "efficient":
-            efficient_linearized_milp(
+            candidate = efficient_linearized_milp(
                 template,
                 gain,
                 right_hand_side,
                 retention,
                 time_limit=milp_time_limit,
             )
-        candidate = manual_linearized_selection(template, gain, right_hand_side, retention)
+        else:
+            candidate = manual_linearized_selection(template, gain, right_hand_side, retention)
         if candidate is None:
             return None
         mask = candidate

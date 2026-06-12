@@ -1,5 +1,5 @@
 ﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
-1.png,weighted_dfp,efficient,817,sports car,581,grille,21.127578735351562,25.373205184936523,,7.779529571533203,,,True,0.6635264999931678,5,False,maximum iterations reached
-2.png,weighted_dfp,efficient,283,Persian cat,700,paper towel,46.55606460571289,51.57905197143555,,18.50429344177246,,,True,0.623743000003742,5,False,maximum iterations reached
-3.png,weighted_dfp,efficient,906,Windsor tie,341,hog,14.893213272094727,27.385866165161133,,7.814908027648926,,,True,0.6521034999896074,5,False,maximum iterations reached
-4.png,weighted_dfp,efficient,985,daisy,591,handkerchief,40.856895446777344,41.12807846069336,,13.463374137878418,,,True,0.632016300005489,5,False,maximum iterations reached
+1.png,weighted_dfp,efficient,817,sports car,717,pickup,36.03089904785156,59.42737579345703,,6.17180871963501,,,True,0.503703400012455,24,True,library quasi-Newton backend completed
+2.png,weighted_dfp,efficient,283,Persian cat,700,paper towel,83.73358917236328,92.93304443359375,,4.464104175567627,,,True,0.47541280000586994,23,True,library quasi-Newton backend completed
+3.png,weighted_dfp,efficient,906,Windsor tie,341,hog,71.41645812988281,104.68578338623047,,5.544147491455078,,,True,0.5173931999888737,25,True,library quasi-Newton backend completed
+4.png,weighted_dfp,efficient,985,daisy,591,handkerchief,61.806861877441406,72.56087493896484,,7.191074371337891,,,True,0.5041752000106499,24,True,library quasi-Newton backend completed

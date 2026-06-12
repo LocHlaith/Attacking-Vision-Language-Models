@@ -1,5 +1,5 @@
 ﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
-1.png,external_point_softplus,efficient,817,sports car,511,convertible,13.810762405395508,7.27729606628418,5.0,7.017507553100586,,,True,1.4695811999990838,5,True,constraint violation tolerance satisfied
-2.png,external_point_softplus,efficient,283,Persian cat,700,paper towel,9.939075469970703,13.781048774719238,5.0,6.826478004455566,,,True,1.5257079000002705,5,True,constraint violation tolerance satisfied
-3.png,external_point_softplus,efficient,906,Windsor tie,982,groom,8.04004192352295,7.096816062927246,5.0,6.008537769317627,,,True,1.5876299999945331,5,True,constraint violation tolerance satisfied
-4.png,external_point_softplus,efficient,985,daisy,591,handkerchief,17.66481590270996,10.567960739135742,5.0,6.7681498527526855,,,True,1.454587200001697,5,True,constraint violation tolerance satisfied
+1.png,external_point_softplus,efficient,817,sports car,511,convertible,16.268444061279297,5.425721645355225,5.0,0.33057695627212524,,,True,1.3021915999997873,70,False,maximum outer iterations reached
+2.png,external_point_softplus,efficient,283,Persian cat,999,toilet tissue,9.890939712524414,5.512579917907715,5.0,0.11223351210355759,,,True,1.4279421999963233,71,True,constraint violation tolerance satisfied
+3.png,external_point_softplus,efficient,906,Windsor tie,652,military uniform,12.732809066772461,5.551307678222656,5.0,0.16393132507801056,,,True,1.374925500000245,76,True,constraint violation tolerance satisfied
+4.png,external_point_softplus,efficient,985,daisy,591,handkerchief,16.773263931274414,5.476744651794434,5.0,0.19798649847507477,,,True,1.271054800003185,68,True,constraint violation tolerance satisfied

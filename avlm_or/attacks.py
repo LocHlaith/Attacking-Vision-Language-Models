@@ -184,13 +184,7 @@ def weighted_attack(
 ) -> AttackOutcome:
     objective = weighted_sum(context, parameters.weight)
     initial = zero_perturbation(context)
-    if backend == "efficient":
-        efficient_result = library_quasi_newton(objective, initial, settings)
-        result = _unconstrained_solver(algorithm, "manual")(objective, initial, settings)
-        result.extra["efficient_candidate_value"] = efficient_result.value
-        result.extra["efficient_candidate_iterations"] = efficient_result.iterations
-    else:
-        result = _unconstrained_solver(algorithm, backend)(objective, initial, settings)
+    result = _unconstrained_solver(algorithm, backend)(objective, initial, settings)
     return AttackOutcome(
         result.point,
         result,
@@ -242,14 +236,8 @@ def external_point_attack(
         "penalty_growth": parameters.penalty_growth,
         "outer_iterations": parameters.outer_iterations,
     }
-    if backend == "efficient":
-        efficient_result = external_point_method(
-            *arguments, **options, inner_solver=library_quasi_newton
-        )
-        result = external_point_method(*arguments, **options, inner_solver=steepest_descent)
-        result.extra["efficient_candidate_value"] = efficient_result.value
-    else:
-        result = external_point_method(*arguments, **options, inner_solver=steepest_descent)
+    inner_solver = library_quasi_newton if backend == "efficient" else steepest_descent
+    result = external_point_method(*arguments, **options, inner_solver=inner_solver)
     return AttackOutcome(
         result.point,
         result,
@@ -282,14 +270,8 @@ def smooth_external_point_attack(
         "penalty_growth": parameters.penalty_growth,
         "outer_iterations": parameters.outer_iterations,
     }
-    if backend == "efficient":
-        efficient_result = external_point_method(
-            *arguments, **options, inner_solver=library_quasi_newton
-        )
-        result = external_point_method(*arguments, **options, inner_solver=steepest_descent)
-        result.extra["efficient_candidate_value"] = efficient_result.value
-    else:
-        result = external_point_method(*arguments, **options, inner_solver=steepest_descent)
+    inner_solver = library_quasi_newton if backend == "efficient" else steepest_descent
+    result = external_point_method(*arguments, **options, inner_solver=inner_solver)
     return AttackOutcome(
         result.point,
         result,
@@ -377,17 +359,6 @@ def dual_loss_attack(
         settings,
         backend,
     )
-    if backend == "efficient":
-        efficient_result = result
-        result = approximate_primal_dual(
-            context,
-            measure,
-            parameters.loss_threshold,
-            parameters,
-            settings,
-            "manual",
-        )
-        result.extra["efficient_candidate_value"] = efficient_result.value
     return AttackOutcome(
         result.point,
         result,
@@ -413,17 +384,6 @@ def toilet_tissue_attack(
         settings,
         backend,
     )
-    if backend == "efficient":
-        efficient_result = result
-        result = approximate_primal_dual(
-            context,
-            measure,
-            parameters.target_margin_threshold,
-            parameters,
-            settings,
-            "manual",
-        )
-        result.extra["efficient_candidate_value"] = efficient_result.value
     return AttackOutcome(
         result.point,
         result,

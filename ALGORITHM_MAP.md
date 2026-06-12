@@ -22,4 +22,4 @@
 | 一阶近似混合整数线性规划 | (6-19) 至 (6-25) | `avlm_or.text_attack.linearized_gain`、`efficient_linearized_milp` |
 | 逐次线性化与反向贪心剪枝 | 第 6.2 节 | `linearized_then_prune`、`reverse_greedy_pruning` |
 
-`avlm_or/solvers/manual.py` 与 `avlm_or/solvers/graph.py` 为课程提交使用的手搓求解器；`avlm_or/solvers/efficient.py` 以及文字 MILP 的高效求解函数只用于实际实验。
+`avlm_or/solvers/manual.py` 与 `avlm_or/solvers/graph.py` 给出手写求解过程；`avlm_or/solvers/efficient.py` 以及文字 MILP 的高效求解函数给出面向运行效率的实现。两类实现均采用同一模型定义和输出规范。
