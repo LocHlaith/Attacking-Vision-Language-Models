@@ -18,4 +18,4 @@
 
 - 参与攻击的图片为 datasets 文件夹中的图片，共四张。
 
-- 为了方便你阅读，我将论文从 Word 复制到了 TXT（papers\draft.txt）。部分公式可能存在乱码，这是从 Word 复制过来导致的，请仔细识别。
+- 为了方便你阅读，我将论文从 Word 复制到了 TXT（papers\draft.txt），实验结果分析复制到了draft_results.md。部分公式可能存在乱码，这是从 Word 复制过来导致的，请仔细识别。
