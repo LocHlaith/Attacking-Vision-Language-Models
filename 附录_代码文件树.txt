@@ -1,0 +1,88 @@
+附录：代码文件树与行数统计
+
+一、统计口径
+
+本附录只统计仓库中自行编写的 Python 源码与测试代码。
+
+不计入任何说明文档，也不计入配置文件、数据文件、模型权重、课件截图、论文文档、实验输出图片与 CSV、虚拟环境和缓存目录。
+
+代码总行数：2375 行。
+代码文件数：19 个 Python 文件。
+
+二、分目录统计
+
+目录        文件数    行数     说明
+avlm_or/      14      2164     项目主程序包，含模型加载、目标函数、攻击算法、求解器和输出
+tests/         5       211     单元测试与命令行调度测试
+合计          19      2375     Python 源码与测试代码合计
+
+三、分文件统计
+
+文件                                      行数    作用
+avlm_or/__init__.py                         6    包导出入口
+avlm_or/types.py                           47    求解结果、迭代记录、决策结果等数据结构
+avlm_or/model.py                          161    MobileNetV2 加载、图像预处理、类别解析与决策上下文
+avlm_or/objectives.py                      47    连续攻击与定向攻击的目标函数、间隔函数和 Lagrange 松弛
+avlm_or/optimality.py                      60    Fritz John 与 KKT 诊断量计算
+avlm_or/io.py                              61    攻击图、扰动图和 CSV 结果保存
+avlm_or/experiment.py                     118    遍历数据集、记录原图、批量运行连续攻击
+avlm_or/run.py                            105    命令行入口与参数分发
+avlm_or/attacks.py                        445    连续扰动攻击算法调度与具体实现
+avlm_or/text_attack.py                    516    文字扰动模板、0-1 模型、线性化与剪枝流程
+avlm_or/solvers/__init__.py                18    求解器导出
+avlm_or/solvers/manual.py                 384    手写最速下降、Newton/LM、DFP、共轭梯度、投影梯度、外点罚函数
+avlm_or/solvers/efficient.py               78    高效后端，使用优化库加速同一数学目标
+avlm_or/solvers/graph.py                  118    连通分量、手写 Ford-Fulkerson 与网络流连通性检验
+tests/test_graph.py                        33    图与网络流求解器测试
+tests/test_reference_labels.py             21    参考类别文件解析测试
+tests/test_run_cli.py                      60    命令行参数分发测试
+tests/test_solvers.py                      53    连续优化求解器测试
+tests/test_text_attack.py                  44    文字模板、MILP 与剪枝测试
+
+四、代码文件树
+
+Attacking-Vision-Language-Models/
+|-- avlm_or/                                      主程序包，2164 行
+|   |-- __init__.py                         6 行   暴露核心模型加载接口
+|   |-- run.py                            105 行   CLI 入口：baseline、attack、all-continuous、text
+|   |-- experiment.py                     118 行   批量实验驱动，统一遍历 datasets/*.png
+|   |-- model.py                          161 行   MobileNetV2、图像预处理、原类别与决策函数
+|   |-- attacks.py                        445 行   连续扰动攻击的算法分发与实现
+|   |-- text_attack.py                    516 行   文字扰动的模板生成、0-1 选择、线性化与剪枝
+|   |-- objectives.py                      47 行   目标函数：加权和、阈值违反、分类间隔、Lagrange 松弛
+|   |-- optimality.py                      60 行   Fritz John / KKT 最优性残差诊断
+|   |-- io.py                              61 行   attacked.png、perturbation.png、mask.png 与 results.csv
+|   |-- types.py                           47 行   SolverResult、SolverSettings、Decision 等数据类
+|   `-- solvers/                                  通用求解器
+|       |-- __init__.py                     18 行   求解器统一导出
+|       |-- manual.py                      384 行   手写后端，强调教材算法过程
+|       |-- efficient.py                    78 行   高效后端，保持同一目标函数与输出规范
+|       `-- graph.py                       118 行   图搜索、最大流、文字笔画连通性
+`-- tests/                                        测试代码，211 行
+    |-- test_solvers.py                    53 行   连续优化求解器正确性
+    |-- test_graph.py                      33 行   图连通与最大流
+    |-- test_text_attack.py                44 行   文字模板和 0-1 选择模型
+    |-- test_run_cli.py                    60 行   CLI 调度参数
+    `-- test_reference_labels.py           21 行   人工参考类别覆盖
+
+五、未计入统计的材料
+
+README.md、ALGORITHM_MAP.md、Codex必读.md、draft_results.md 等说明文档不计入代码行数。
+pyproject.toml、datasets/reference_labels.json 等配置文件不计入代码行数。
+datasets/、models/、figs/、slides/、papers/、outputs/ 等数据、模型、课件、论文和实验结果目录不计入代码行数。
+
+六、复现统计命令
+
+PowerShell:
+
+$files = rg --files -g '*.py' -g '!outputs/**' -g '!slides/**' -g '!models/**' `
+  -g '!figs/**' -g '!datasets/**' -g '!papers/**' -g '!.venv/**' `
+  -g '!.git/**' -g '!.pytest_cache/**' -g '!.ruff_cache/**'
+$rows = foreach ($f in $files) {
+  [pscustomobject]@{
+    Path = $f
+    Lines = ([System.IO.File]::ReadAllLines((Resolve-Path -LiteralPath $f))).Count
+  }
+}
+$rows | Sort-Object Path
+($rows | Measure-Object Lines -Sum).Sum
