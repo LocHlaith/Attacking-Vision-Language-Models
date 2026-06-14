@@ -1,5 +1,5 @@
 ﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
-1.png,external_point_softplus,manual,817,sports car,511,convertible,13.810762405395508,7.27729606628418,5.0,7.017507553100586,,,True,0.2359986000083154,5,True,constraint violation tolerance satisfied
-2.png,external_point_softplus,manual,283,Persian cat,700,paper towel,9.939075469970703,13.781048774719238,5.0,6.826478004455566,,,True,0.27122070000041276,5,True,constraint violation tolerance satisfied
-3.png,external_point_softplus,manual,906,Windsor tie,982,groom,8.04004192352295,7.096816062927246,5.0,6.008537769317627,,,True,0.23463510000146925,5,True,constraint violation tolerance satisfied
-4.png,external_point_softplus,manual,985,daisy,591,handkerchief,17.66481590270996,10.567960739135742,5.0,6.7681498527526855,,,True,0.24732189999485854,5,True,constraint violation tolerance satisfied
+1.png,external_point_softplus,manual,817,sports car,511,convertible,16.11371421813965,5.497804164886475,5.0,0.3456403613090515,,,True,4.797897900003591,120,True,constraint violation tolerance satisfied
+2.png,external_point_softplus,manual,283,Persian cat,999,toilet tissue,8.826921463012695,6.532767295837402,5.0,0.35403111577033997,,,True,0.9464224999974249,30,True,constraint violation tolerance satisfied
+3.png,external_point_softplus,manual,906,Windsor tie,652,military uniform,9.393274307250977,7.224750518798828,5.0,0.6192501187324524,,,True,0.9346032000030391,30,True,constraint violation tolerance satisfied
+4.png,external_point_softplus,manual,985,daisy,591,handkerchief,16.81441307067871,6.635995388031006,5.0,0.3404073119163513,,,True,0.9544443999911891,30,True,constraint violation tolerance satisfied

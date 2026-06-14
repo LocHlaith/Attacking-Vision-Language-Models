@@ -9,6 +9,7 @@ from .attacks import AttackParameters, run_attack
 from .io import save_attack_images, save_tensor_image, write_csv
 from .model import load_context, load_model, load_reference_labels
 from .types import SolverSettings
+from .visualization import save_outer_trace, save_solver_history
 
 
 def dataset_images(dataset_directory: str | Path = "datasets") -> list[Path]:
@@ -87,7 +88,13 @@ def run_batch(
             if algorithm == "toilet_tissue"
             else decision.class_index != context.original_class
         )
-        save_attack_images(context, applied_perturbation, target / image_path.stem)
+        image_target = target / image_path.stem
+        save_attack_images(context, applied_perturbation, image_target)
+        save_solver_history(outcome.result.history, image_target / "process.png")
+        save_outer_trace(
+            outcome.result.extra.get("outer_trace", []),
+            image_target / "outer_process.png",
+        )
         rows.append(
             {
                 "image": image_path.name,

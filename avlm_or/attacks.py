@@ -24,7 +24,7 @@ from .solvers.manual import (
     projected_gradient,
     steepest_descent,
 )
-from .types import SolverResult, SolverSettings
+from .types import IterationRecord, SolverResult, SolverSettings
 
 
 @dataclass
@@ -66,17 +66,34 @@ def analytic_first_order(
     gradient = torch.autograd.grad(loss, point)[0].detach()
     norm = torch.linalg.vector_norm(gradient).clamp_min(1e-30)
     perturbation = threshold * gradient / norm
+    candidate_loss = float(context.loss(perturbation).detach().item())
     result = SolverResult(
         perturbation,
-        float((-context.loss(perturbation)).detach().item()),
+        -candidate_loss,
         1,
         True,
         "first-order Lagrange satisfactory solution",
+        [
+            IterationRecord(
+                0,
+                float((-loss).detach().item()),
+                float(norm.item()),
+                0.0,
+                0.0,
+            ),
+            IterationRecord(
+                1,
+                -candidate_loss,
+                0.0,
+                float(torch.linalg.vector_norm(perturbation).item()),
+                threshold,
+            ),
+        ],
     )
     return AttackOutcome(
         perturbation,
         result,
-        float(context.loss(perturbation).detach().item()),
+        candidate_loss,
         None,
         threshold,
     )
@@ -122,7 +139,8 @@ def second_order_ball_approximation(
         upper *= 2.0
         candidate = solve(upper)
     lower = 0.0
-    for _ in range(multiplier_iterations):
+    history: list[IterationRecord] = []
+    for iteration in range(multiplier_iterations):
         multiplier = (lower + upper) / 2.0
         curvature = torch.dot(
             gradient.reshape(-1),
@@ -132,6 +150,16 @@ def second_order_ball_approximation(
             lower = multiplier
             continue
         candidate = solve(multiplier)
+        residual = 2.0 * multiplier * candidate - hessian_product(candidate) - gradient
+        history.append(
+            IterationRecord(
+                iteration,
+                float((-context.loss(candidate)).detach().item()),
+                float(torch.linalg.vector_norm(residual).item()),
+                float(torch.linalg.vector_norm(candidate).item()),
+                multiplier,
+            )
+        )
         if torch.linalg.vector_norm(candidate) > threshold:
             lower = multiplier
         else:
@@ -143,6 +171,7 @@ def second_order_ball_approximation(
         multiplier_iterations,
         True,
         "second-order KKT approximation completed",
+        history,
         extra={"lagrange_multiplier": upper},
     )
     return AttackOutcome(
@@ -294,6 +323,7 @@ def approximate_primal_dual(
     best_point: torch.Tensor | None = None
     best_norm = float("inf")
     history = []
+    outer_trace: list[dict[str, float]] = []
     generator = torch.Generator(device=point.device)
     generator.manual_seed(parameters.random_seed)
     for outer in range(parameters.outer_iterations):
@@ -326,6 +356,16 @@ def approximate_primal_dual(
                 best_point = candidate.point.detach().clone()
                 best_norm = candidate_norm
         measure_value = float(measure(point).detach().item())
+        outer_trace.append(
+            {
+                "outer": float(outer),
+                "multiplier": float(multiplier),
+                "measure": measure_value,
+                "norm": float(torch.linalg.vector_norm(point).item()),
+                "best_norm": float(best_norm**0.5) if best_point is not None else float("nan"),
+                "violation": max(0.0, float(threshold - measure_value)),
+            }
+        )
         multiplier = max(
             0.0,
             multiplier + parameters.multiplier_step * (threshold - measure_value),
@@ -338,7 +378,11 @@ def approximate_primal_dual(
         best_point is not None,
         "feasible satisfactory solution retained" if best_point is not None else "no feasible candidate retained",
         history,
-        {"lagrange_multiplier": multiplier, "outer_iterations": parameters.outer_iterations},
+        {
+            "lagrange_multiplier": multiplier,
+            "outer_iterations": parameters.outer_iterations,
+            "outer_trace": outer_trace,
+        },
     )
 
 

@@ -350,6 +350,7 @@ def external_point_method(
     point = initial_point.detach().clone()
     penalty = initial_penalty
     all_history: list[IterationRecord] = []
+    outer_trace: list[dict[str, float]] = []
     total_iterations = 0
     last_result: SolverResult | None = None
     for outer in range(outer_iterations):
@@ -361,6 +362,15 @@ def external_point_method(
         point = last_result.point
         all_history.extend(last_result.history)
         current_violation = float(violation(point).detach().item())
+        outer_trace.append(
+            {
+                "outer": float(outer),
+                "penalty": float(penalty),
+                "violation": current_violation,
+                "norm": float(torch.linalg.vector_norm(point).item()),
+                "measure": float(base_objective(point).detach().item()),
+            }
+        )
         if current_violation <= violation_tolerance:
             return SolverResult(
                 point,
@@ -369,7 +379,11 @@ def external_point_method(
                 True,
                 "constraint violation tolerance satisfied",
                 all_history,
-                {"penalty": penalty, "outer_iterations": outer + 1},
+                {
+                    "penalty": penalty,
+                    "outer_iterations": outer + 1,
+                    "outer_trace": outer_trace,
+                },
             )
         penalty *= penalty_growth
     assert last_result is not None
@@ -380,5 +394,9 @@ def external_point_method(
         False,
         "maximum outer iterations reached",
         all_history,
-        {"penalty": penalty, "outer_iterations": outer_iterations},
+        {
+            "penalty": penalty,
+            "outer_iterations": outer_iterations,
+            "outer_trace": outer_trace,
+        },
     )

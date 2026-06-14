@@ -1,5 +1,5 @@
 ﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
-1.png,weighted_dfp,manual,817,sports car,581,grille,21.127578735351562,25.373205184936523,,7.779529571533203,,,True,0.22988709999481216,5,False,maximum iterations reached
-2.png,weighted_dfp,manual,283,Persian cat,700,paper towel,46.55606460571289,51.57905197143555,,18.50429344177246,,,True,0.2443327000073623,5,False,maximum iterations reached
-3.png,weighted_dfp,manual,906,Windsor tie,341,hog,14.893213272094727,27.385866165161133,,7.814908027648926,,,True,0.21280140000453684,5,False,maximum iterations reached
-4.png,weighted_dfp,manual,985,daisy,591,handkerchief,40.856895446777344,41.12807846069336,,13.463374137878418,,,True,0.24235300000873394,5,False,maximum iterations reached
+1.png,weighted_dfp,manual,817,sports car,581,grille,44.84458923339844,73.2590560913086,,18.95330238342285,,,True,1.1574250999983633,30,False,maximum iterations reached
+2.png,weighted_dfp,manual,283,Persian cat,700,paper towel,94.2462387084961,108.3250503540039,,24.824491500854492,,,True,1.407418199989479,30,False,maximum iterations reached
+3.png,weighted_dfp,manual,906,Windsor tie,341,hog,90.54531860351562,132.02700805664062,,28.418363571166992,,,True,1.3269949999958044,30,False,maximum iterations reached
+4.png,weighted_dfp,manual,985,daisy,591,handkerchief,70.82050323486328,97.45722198486328,,24.273284912109375,,,True,1.2298412999953143,30,False,maximum iterations reached

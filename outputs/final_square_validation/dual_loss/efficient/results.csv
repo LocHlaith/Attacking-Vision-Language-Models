@@ -1,5 +1,5 @@
 ﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
-1.png,dual_loss,efficient,817,sports car,511,convertible,25.842082977294922,30.090686798095703,5.0,2.552564859390259,,,True,1.998652199996286,0,True,feasible satisfactory solution retained
-2.png,dual_loss,efficient,283,Persian cat,700,paper towel,77.9101791381836,85.35914611816406,5.0,2.6388003826141357,,,True,1.9861416000057943,0,True,feasible satisfactory solution retained
-3.png,dual_loss,efficient,906,Windsor tie,952,fig,59.50011444091797,84.23728942871094,5.0,2.6873254776000977,,,True,1.9830895999912173,0,True,feasible satisfactory solution retained
-4.png,dual_loss,efficient,985,daisy,591,handkerchief,53.531978607177734,57.29508972167969,5.0,3.1588594913482666,,,True,1.991766599996481,0,True,feasible satisfactory solution retained
+1.png,dual_loss,efficient,817,sports car,511,convertible,29.513988494873047,41.46839141845703,5.0,3.021075963973999,,,True,16.180155499998364,520,True,feasible satisfactory solution retained
+2.png,dual_loss,efficient,283,Persian cat,700,paper towel,92.22427368164062,109.71168518066406,5.0,2.7040252685546875,,,True,15.945508099990548,516,True,feasible satisfactory solution retained
+3.png,dual_loss,efficient,906,Windsor tie,952,fig,79.37662506103516,116.20265197753906,5.0,3.268601417541504,,,True,16.218631600000663,524,True,feasible satisfactory solution retained
+4.png,dual_loss,efficient,985,daisy,591,handkerchief,63.79267120361328,75.20895385742188,5.0,3.660675287246704,,,True,16.141176000004634,524,True,feasible satisfactory solution retained

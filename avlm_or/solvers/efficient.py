@@ -4,6 +4,7 @@ from collections.abc import Callable
 
 import torch
 
+from ..types import IterationRecord
 from ..types import SolverResult, SolverSettings
 
 Objective = Callable[[torch.Tensor], torch.Tensor]
@@ -19,6 +20,8 @@ def optimizer_steepest_descent(
     point = initial_point.detach().clone().requires_grad_(True)
     optimizer = torch.optim.SGD([point], lr=settings.initial_step)
     previous = float("inf")
+    previous_point = point.detach().clone()
+    history: list[IterationRecord] = []
     converged = False
     for iteration in range(settings.max_iterations):
         optimizer.zero_grad(set_to_none=True)
@@ -27,6 +30,18 @@ def optimizer_steepest_descent(
         gradient_norm = float(torch.linalg.vector_norm(point.grad).item())
         optimizer.step()
         current = float(value.detach().item())
+        current_point = point.detach().clone()
+        step_norm = float(torch.linalg.vector_norm(current_point - previous_point).item())
+        previous_point = current_point
+        history.append(
+            IterationRecord(
+                iteration,
+                current,
+                gradient_norm,
+                step_norm,
+                settings.initial_step,
+            )
+        )
         if gradient_norm <= settings.gradient_tolerance or abs(previous - current) <= settings.objective_tolerance:
             converged = True
             break
@@ -38,6 +53,7 @@ def optimizer_steepest_descent(
         iteration + 1,
         converged,
         "termination criterion satisfied" if converged else "maximum iterations reached",
+        history,
     )
 
 
@@ -58,13 +74,32 @@ def library_quasi_newton(
         line_search_fn="strong_wolfe",
     )
     calls = 0
+    previous_point = point.detach().clone()
+    history: list[IterationRecord] = []
 
     def closure() -> torch.Tensor:
-        nonlocal calls
+        nonlocal calls, previous_point
         calls += 1
         optimizer.zero_grad(set_to_none=True)
         value = objective(point)
         value.backward()
+        current_point = point.detach().clone()
+        step_norm = float(torch.linalg.vector_norm(current_point - previous_point).item())
+        previous_point = current_point
+        gradient_norm = (
+            float(torch.linalg.vector_norm(point.grad).item())
+            if point.grad is not None
+            else 0.0
+        )
+        history.append(
+            IterationRecord(
+                calls - 1,
+                float(value.detach().item()),
+                gradient_norm,
+                step_norm,
+                1.0,
+            )
+        )
         return value
 
     optimizer.step(closure)
@@ -75,4 +110,5 @@ def library_quasi_newton(
         calls,
         True,
         "library quasi-Newton backend completed",
+        history,
     )

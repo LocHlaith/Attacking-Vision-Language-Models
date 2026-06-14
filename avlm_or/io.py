@@ -49,7 +49,7 @@ def save_attack_images(
     magnitude = effective_perturbation.detach().abs()
     scale = magnitude.max().clamp_min(1e-12)
     save_tensor_image(candidate, target / "attacked.png")
-    save_tensor_image(magnitude / scale, target / "perturbation.png")
+    save_tensor_image(1.0 - magnitude / scale, target / "perturbation.png")
 
 
 def write_csv(path: str | Path, rows: Iterable[dict[str, object]]) -> None:

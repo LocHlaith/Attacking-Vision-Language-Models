@@ -1,5 +1,5 @@
 ﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
-1.png,projected_gradient,efficient,817,sports car,511,convertible,18.723207473754883,13.517828941345215,,1.2280726432800293,4.0,,True,0.21249360000365414,5,False,maximum iterations reached
-2.png,projected_gradient,efficient,283,Persian cat,700,paper towel,37.73930740356445,38.95207214355469,,3.5735714435577393,4.0,,True,0.22188150000874884,5,False,maximum iterations reached
-3.png,projected_gradient,efficient,906,Windsor tie,652,military uniform,34.731895446777344,44.056819915771484,,3.8611960411071777,4.0,,True,0.21634009999979753,5,False,maximum iterations reached
-4.png,projected_gradient,efficient,985,daisy,591,handkerchief,33.980892181396484,29.33296775817871,,1.8532077074050903,4.0,,True,0.222227300007944,5,False,maximum iterations reached
+1.png,projected_gradient,efficient,817,sports car,511,convertible,27.630781173706055,43.89228820800781,,3.997981309890747,4.0,,True,1.0187005999905523,30,False,maximum iterations reached
+2.png,projected_gradient,efficient,283,Persian cat,700,paper towel,92.38910675048828,103.66669464111328,,3.9999842643737793,4.0,,True,1.214961299992865,30,False,maximum iterations reached
+3.png,projected_gradient,efficient,906,Windsor tie,652,military uniform,66.37317657470703,100.71542358398438,,3.999960422515869,4.0,,True,1.298463899991475,30,False,maximum iterations reached
+4.png,projected_gradient,efficient,985,daisy,591,handkerchief,60.41780471801758,69.11603546142578,,4.000000476837158,4.0,,True,1.1124389000033261,30,False,maximum iterations reached

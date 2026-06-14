@@ -1,5 +1,5 @@
 ﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
-1.png,external_point,manual,817,sports car,511,convertible,13.810762405395508,7.27729606628418,5.0,7.017507553100586,,,True,0.22656010001082905,5,True,constraint violation tolerance satisfied
-2.png,external_point,manual,283,Persian cat,700,paper towel,9.939071655273438,13.781046867370605,5.0,6.826478004455566,,,True,0.24970759999996517,5,True,constraint violation tolerance satisfied
-3.png,external_point,manual,906,Windsor tie,982,groom,8.04004192352295,7.096816062927246,5.0,6.008537769317627,,,True,0.22303219999594148,5,True,constraint violation tolerance satisfied
-4.png,external_point,manual,985,daisy,591,handkerchief,17.66481590270996,10.567960739135742,5.0,6.7681498527526855,,,True,0.23830089998955373,5,True,constraint violation tolerance satisfied
+1.png,external_point,manual,817,sports car,511,convertible,15.392112731933594,5.095415115356445,5.0,0.5441380739212036,,,True,1.114803899996332,30,True,constraint violation tolerance satisfied
+2.png,external_point,manual,283,Persian cat,999,toilet tissue,8.826923370361328,6.532767295837402,5.0,0.35403120517730713,,,True,0.9326206999976421,30,True,constraint violation tolerance satisfied
+3.png,external_point,manual,906,Windsor tie,652,military uniform,8.221502304077148,5.025504112243652,5.0,0.6378985643386841,,,True,0.9418084000062663,30,True,constraint violation tolerance satisfied
+4.png,external_point,manual,985,daisy,591,handkerchief,16.81441307067871,6.635995388031006,5.0,0.3404073119163513,,,True,0.9494706999976188,30,True,constraint violation tolerance satisfied

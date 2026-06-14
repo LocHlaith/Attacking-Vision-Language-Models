@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import math
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 import numpy as np
@@ -28,6 +28,11 @@ from .solvers.graph import (
     is_connected,
     network_flow_connected,
 )
+from .visualization import (
+    save_linearization_trace,
+    save_pruning_trace,
+    save_template_trials,
+)
 
 DEFAULT_FONT = Path("C:/Windows/Fonts/simhei.ttf")
 DEFAULT_TEXT = "\u5f20\u5929\u7fbd"
@@ -51,6 +56,9 @@ class TextAttackResult:
     area: int
     method: str
     message: str
+    template_name: str
+    pruning_history: list[dict[str, float]] = field(default_factory=list)
+    linearization_history: list[dict[str, float]] = field(default_factory=list)
 
 
 def render_text_template(
@@ -181,8 +189,16 @@ def reverse_greedy_pruning(
     max_checks: int | None = None,
 ) -> TextAttackResult | None:
     mask = template.mask.copy()
-    if true_margin(context, mask) < margin_threshold:
+    initial_margin = true_margin(context, mask)
+    if initial_margin < margin_threshold:
         return None
+    pruning_history = [
+        {
+            "check": 0.0,
+            "area": float(mask.sum()),
+            "margin": initial_margin,
+        }
+    ]
     checks = 0
     while True:
         _, gain = linearized_gain(context, mask)
@@ -197,9 +213,22 @@ def reverse_greedy_pruning(
             trial = mask.copy()
             trial[vertex] = False
             checks += 1
-            if _stroke_constraints_hold(template, trial, retention) and true_margin(context, trial) >= margin_threshold:
+            if not _stroke_constraints_hold(template, trial, retention):
+                if max_checks is not None and checks >= max_checks:
+                    changed = False
+                    break
+                continue
+            trial_margin = true_margin(context, trial)
+            if trial_margin >= margin_threshold:
                 mask = trial
                 changed = True
+                pruning_history.append(
+                    {
+                        "check": float(checks),
+                        "area": float(mask.sum()),
+                        "margin": trial_margin,
+                    }
+                )
             if max_checks is not None and checks >= max_checks:
                 changed = False
                 break
@@ -213,6 +242,8 @@ def reverse_greedy_pruning(
         int(mask.sum()),
         "reverse_greedy",
         f"{template.name}; accepted after {checks} deletion checks",
+        template.name,
+        pruning_history,
     )
 
 
@@ -353,7 +384,8 @@ def linearized_then_prune(
     milp_time_limit: float = 60.0,
 ) -> TextAttackResult | None:
     mask = template.mask.copy()
-    for _ in range(linearization_iterations):
+    linearization_history: list[dict[str, float]] = []
+    for iteration in range(linearization_iterations):
         reference_margin, gain = linearized_gain(context, mask)
         right_hand_side = (
             margin_threshold
@@ -373,7 +405,17 @@ def linearized_then_prune(
         if candidate is None:
             return None
         mask = candidate
-        if true_margin(context, mask) >= margin_threshold:
+        margin = true_margin(context, mask)
+        linearization_history.append(
+            {
+                "iteration": float(iteration),
+                "reference_margin": reference_margin,
+                "right_hand_side": right_hand_side,
+                "area": float(mask.sum()),
+                "margin": margin,
+            }
+        )
+        if margin >= margin_threshold:
             break
     if true_margin(context, mask) < margin_threshold:
         return None
@@ -387,6 +429,7 @@ def linearized_then_prune(
     )
     if result is not None:
         result.method = f"linearized_milp_{backend}"
+        result.linearization_history = linearization_history
     return result
 
 
@@ -418,6 +461,7 @@ def run_text_batch(
             (template, true_margin(context, template.mask))
             for template in templates
         ]
+        margin_by_name = {template.name: margin for template, margin in scored_templates}
         ranked_templates = [
             template
             for template, _ in sorted(
@@ -431,7 +475,15 @@ def run_text_batch(
         ]
         if template_limit is not None:
             ranked_templates = ranked_templates[:template_limit]
+        trial_records: list[dict[str, object]] = []
         for template in ranked_templates:
+            trial_record: dict[str, object] = {
+                "name": template.name,
+                "mask": template.mask,
+                "area": int(template.mask.sum()),
+                "margin": margin_by_name[template.name],
+                "status": "rejected",
+            }
             if method == "reverse_greedy":
                 result = reverse_greedy_pruning(
                     context,
@@ -453,12 +505,15 @@ def run_text_batch(
                 )
             if result is not None:
                 candidates.append(result)
+                trial_record["status"] = "feasible"
+            trial_records.append(trial_record)
         if not candidates:
             elapsed = time.perf_counter() - start
             perturbation = torch.zeros_like(context.raw_image)
             decision = context.decision(perturbation)
             image_target = target / image_path.stem
             save_attack_images(context, perturbation, image_target)
+            save_template_trials(trial_records, image_target / "template_trials.png")
             rows.append(
                 {
                     "image": image_path.name,
@@ -488,8 +543,18 @@ def run_text_batch(
         elapsed = time.perf_counter() - start
         decision = context.decision(result.perturbation)
         image_target = target / image_path.stem
+        for trial_record in trial_records:
+            if trial_record["name"] == result.template_name:
+                trial_record["status"] = "chosen"
+                break
         save_attack_images(context, result.perturbation, image_target)
         save_tensor_image(mask_tensor(result.mask, context).float(), image_target / "mask.png")
+        save_template_trials(trial_records, image_target / "template_trials.png")
+        save_pruning_trace(result.pruning_history, image_target / "pruning_process.png")
+        save_linearization_trace(
+            result.linearization_history,
+            image_target / "linearization_process.png",
+        )
         rows.append(
             {
                 "image": image_path.name,

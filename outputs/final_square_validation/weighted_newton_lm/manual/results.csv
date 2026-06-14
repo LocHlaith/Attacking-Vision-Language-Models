@@ -1,5 +1,5 @@
 ﻿image,algorithm,backend,original_class,original_class_name,decision_class,decision_class_name,decision_score,decision_function,decision_threshold,perturbation_l2,perturbation_threshold,perturbation_area,successful,elapsed_seconds,iterations,converged,message
-1.png,weighted_newton_lm,manual,817,sports car,717,pickup,15.361088752746582,26.35313606262207,,7.196663856506348,,,True,5.359150000003865,5,False,maximum iterations reached
-2.png,weighted_newton_lm,manual,283,Persian cat,700,paper towel,43.91758346557617,47.73728561401367,,11.611345291137695,,,True,5.845219399998314,5,False,maximum iterations reached
-3.png,weighted_newton_lm,manual,906,Windsor tie,341,hog,29.425220489501953,48.594383239746094,,9.555203437805176,,,True,5.915974499992444,5,False,maximum iterations reached
-4.png,weighted_newton_lm,manual,985,daisy,591,handkerchief,39.50851058959961,39.99545669555664,,9.152406692504883,,,True,10.501858699994045,5,False,maximum iterations reached
+1.png,weighted_newton_lm,manual,817,sports car,609,jeep,58.32978057861328,85.10006713867188,,10.297595024108887,,,True,41.72840439999709,30,False,maximum iterations reached
+2.png,weighted_newton_lm,manual,283,Persian cat,700,paper towel,88.47866821289062,101.33325958251953,,8.829328536987305,,,True,56.11400899999717,30,False,maximum iterations reached
+3.png,weighted_newton_lm,manual,906,Windsor tie,341,hog,89.55703735351562,129.3780059814453,,7.819865703582764,,,True,68.38558489999559,30,False,maximum iterations reached
+4.png,weighted_newton_lm,manual,985,daisy,591,handkerchief,65.77335357666016,82.49456024169922,,9.788415908813477,,,True,49.99506809999002,30,False,maximum iterations reached
