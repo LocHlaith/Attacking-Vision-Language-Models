@@ -42,12 +42,16 @@ def save_attack_images(
     context: ImageModelContext,
     perturbation: torch.Tensor,
     directory: str | Path,
+    scale: float | None = None,
 ) -> None:
     target = Path(directory)
     candidate = torch.clamp(context.raw_image + perturbation, 0.0, 1.0)
     effective_perturbation = candidate - context.raw_image
     magnitude = effective_perturbation.detach().abs()
-    scale = magnitude.max().clamp_min(1e-12)
+    if scale is None:
+        scale = float(magnitude.max().clamp_min(1e-12).item())
+    else:
+        scale = max(scale, 1e-12)
     save_tensor_image(candidate, target / "attacked.png")
     save_tensor_image(1.0 - magnitude / scale, target / "perturbation.png")
 

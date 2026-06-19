@@ -69,7 +69,7 @@ def run_batch(
     model = load_model(device=device)
     reference_labels = load_reference_labels(reference_labels_path)
     target = Path(output_root) / algorithm / backend
-    rows: list[dict[str, object]] = []
+    entries: list[dict[str, object]] = []
     for image_path in dataset_images():
         context = load_context(image_path, model, reference_labels)
         start = time.perf_counter()
@@ -80,7 +80,7 @@ def run_batch(
         applied_perturbation = (
             torch.clamp(context.raw_image + outcome.perturbation, 0.0, 1.0)
             - context.raw_image
-        )
+        ).detach()
         decision = context.decision(applied_perturbation)
         perturbation_l2 = float(torch.linalg.vector_norm(applied_perturbation).item())
         successful = (
@@ -88,8 +88,37 @@ def run_batch(
             if algorithm == "toilet_tissue"
             else decision.class_index != context.original_class
         )
-        image_target = target / image_path.stem
-        save_attack_images(context, applied_perturbation, image_target)
+        entries.append(
+            {
+                "image_path": image_path,
+                "context": context,
+                "applied_perturbation": applied_perturbation,
+                "outcome": outcome,
+                "decision": decision,
+                "elapsed": elapsed,
+                "perturbation_l2": perturbation_l2,
+                "successful": successful,
+            }
+        )
+    # Use a common normalisation scale so perturbation images are visually comparable.
+    perturbation_scales = [
+        float(entry["applied_perturbation"].detach().abs().max().item())
+        for entry in entries
+    ]
+    global_perturbation_scale = max(perturbation_scales) if perturbation_scales else 1e-12
+    rows: list[dict[str, object]] = []
+    for entry in entries:
+        context: ImageModelContext = entry["context"]
+        applied_perturbation: torch.Tensor = entry["applied_perturbation"]
+        outcome: object = entry["outcome"]
+        decision: object = entry["decision"]
+        image_target = target / entry["image_path"].stem
+        save_attack_images(
+            context,
+            applied_perturbation,
+            image_target,
+            scale=global_perturbation_scale,
+        )
         save_solver_history(outcome.result.history, image_target / "process.png")
         save_outer_trace(
             outcome.result.extra.get("outer_trace", []),
@@ -97,7 +126,7 @@ def run_batch(
         )
         rows.append(
             {
-                "image": image_path.name,
+                "image": entry["image_path"].name,
                 "algorithm": algorithm,
                 "backend": backend,
                 "original_class": context.original_class,
@@ -110,12 +139,12 @@ def run_batch(
                 if outcome.decision_threshold is not None
                 else "",
                 "perturbation_area": "",
-                "perturbation_l2": perturbation_l2,
+                "perturbation_l2": entry["perturbation_l2"],
                 "perturbation_threshold": outcome.perturbation_threshold
                 if outcome.perturbation_threshold is not None
                 else "",
-                "successful": successful,
-                "elapsed_seconds": elapsed,
+                "successful": entry["successful"],
+                "elapsed_seconds": entry["elapsed"],
                 "iterations": outcome.result.iterations,
                 "converged": outcome.result.converged,
                 "message": outcome.result.message,
